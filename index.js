@@ -26,9 +26,10 @@ app.use(cookieParser());
 
 app.use(express.static(`${__dirname}/static`));
 const {GetIP}=require("./middelwares/ip")
-const { auth,torrent } = require("./routers");
+const { auth,torrent,nickname } = require("./routers");
 app.use("/api/authentication", auth);
 app.use("/api/torrent",GetIP,torrent)
+app.use("/api/nickname",nickname)
 
 app.listen(PORT, () => {
   console.log(`Server run at port: ${PORT}`);
